@@ -197,3 +197,4 @@ MonoBehaviour:
   speed: 3
   JumpForce: 5
   PlayerSprite: {fileID: 3258418275866840513}
+  PlayerAnimator: {fileID: 5521887865570416698}

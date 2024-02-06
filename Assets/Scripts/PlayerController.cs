@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [SerializeField] private float JumpForce = 5.0f;
     [SerializeField] private SpriteRenderer PlayerSprite;
+    [SerializeField] private Animator PlayerAnimator;
+    private int state = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,23 @@ public class PlayerController : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         
         playerRb.velocity = new Vector2(dirX*speed, playerRb.velocity.y);
+        
+
+        // The flip a Player in Move
+        if (dirX < 0)
+        {
+            state = 1;
+            PlayerSprite.flipX = true;
+        }
+        else if (dirX > 0) 
+        {
+            state = 1;
+            PlayerSprite.flipX = false;
+        }
+        else
+        {
+            state = 0;
+        }
 
         // To Jump a Player
         if (Input.GetKeyDown(KeyCode.Space))
@@ -29,14 +48,15 @@ public class PlayerController : MonoBehaviour
             playerRb.velocity = new Vector2(playerRb.velocity.x,JumpForce);
         }
 
-        // The flip a Player in Move
-        if (dirX < 0)
+        if (playerRb.velocity.y > 0 )
         {
-            PlayerSprite.flipX = true;
+            state = 2;
         }
-        else
+        else if (playerRb.velocity.y < 0)
         {
-            PlayerSprite.flipX = false;
+            state = 3;
         }
+
+        PlayerAnimator.SetInteger("State",state);
     }
 }
