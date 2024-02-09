@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer PlayerSprite;
     [SerializeField] private Animator PlayerAnimator;
     private int state = 0;
+    [SerializeField] private BoxCollider2D PlayerCollider;
+    [SerializeField] private LayerMask GroundLayer;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // To Jump a Player
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x,JumpForce);
         }
@@ -58,5 +60,10 @@ public class PlayerController : MonoBehaviour
         }
 
         PlayerAnimator.SetInteger("State",state);
+    }
+
+    private bool isGrounded()
+    {
+       return Physics2D.BoxCast(PlayerCollider.bounds.center,PlayerCollider.bounds.size,0f,Vector2.down,0.1f,GroundLayer);
     }
 }

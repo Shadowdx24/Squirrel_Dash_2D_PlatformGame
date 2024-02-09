@@ -198,3 +198,7 @@ MonoBehaviour:
   JumpForce: 5
   PlayerSprite: {fileID: 3258418275866840513}
   PlayerAnimator: {fileID: 5521887865570416698}
+  PlayerCollider: {fileID: 6750469580208059168}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
