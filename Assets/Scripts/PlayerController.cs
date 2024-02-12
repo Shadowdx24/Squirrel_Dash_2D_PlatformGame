@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private int state = 0;
     [SerializeField] private BoxCollider2D PlayerCollider;
     [SerializeField] private LayerMask GroundLayer;
+    private int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -65,5 +66,16 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded()
     {
        return Physics2D.BoxCast(PlayerCollider.bounds.center,PlayerCollider.bounds.size,0f,Vector2.down,0.1f,GroundLayer);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            score++;
+            Debug.Log(score);
+            Destroy(collision.gameObject);
+           
+        }
     }
 }
