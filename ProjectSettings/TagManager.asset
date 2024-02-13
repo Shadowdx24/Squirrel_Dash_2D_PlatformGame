@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - FinishLine
+  - Spikes
   layers:
   - Default
   - TransparentFX

@@ -77,5 +77,19 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
            
         }
+        else if (collision.gameObject.CompareTag("FinishLine"))
+        {
+            Debug.Log("Level1 Complete");
+        }
+        
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            Debug.Log("Game Over");
+        }
     }
 }
