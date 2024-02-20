@@ -14,21 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         // To Move a Player
         float dirX = Input.GetAxis("Horizontal");
         
-        playerRb.velocity = new Vector2(dirX*speed, playerRb.velocity.y);
+        playerRb.velocity = new Vector2(dirX * speed, playerRb.velocity.y);
         
-
         // The flip a Player in Move
         if (dirX < 0)
         {
@@ -51,11 +43,11 @@ public class PlayerController : MonoBehaviour
             playerRb.velocity = new Vector2(playerRb.velocity.x,JumpForce);
         }
 
-        if (playerRb.velocity.y > 0 )
+        if (playerRb.velocity.y > 0.1f)
         {
             state = 2;
         }
-        else if (playerRb.velocity.y < 0)
+        else if (playerRb.velocity.y < -0.1f)
         {
             state = 3;
         }
@@ -81,8 +73,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Level1 Complete");
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
