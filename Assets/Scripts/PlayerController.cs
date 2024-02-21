@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -83,10 +84,17 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
+            Restart();
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
             PlayerAnimator.SetTrigger("Die");
+            Restart();
         }
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
