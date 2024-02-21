@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D PlayerCollider;
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
+    
 
     void Update()
     {
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             state = 0;
+            Debug.Log("idle");
         }
 
         // To Jump a Player
@@ -80,6 +82,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Spikes"))
         {
             Debug.Log("Game Over");
+            PlayerAnimator.SetTrigger("Die");
+        }
+        else if (collision.gameObject.CompareTag("Fall"))
+        {
+            PlayerAnimator.SetTrigger("Die");
         }
     }
 }
