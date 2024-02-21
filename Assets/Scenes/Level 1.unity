@@ -110375,7 +110375,7 @@ GameObject:
   - component: {fileID: 1475005725}
   - component: {fileID: 1475005724}
   m_Layer: 0
-  m_Name: Destroyer
+  m_Name: Fall
   m_TagString: Fall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

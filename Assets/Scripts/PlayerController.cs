@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
     
-
     void Update()
     {
         // To Move a Player
@@ -65,6 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
+            //To collect a Gem and Grind a Score
             score++;
             Debug.Log(score);
             Destroy(collision.gameObject);
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
+            // To Win this Level
             Debug.Log("Level1 Complete");
         }
     }
@@ -80,12 +81,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Spikes"))
         {
+            // Die to A Player with Spikes
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
             Restart();
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
+            // Die to A Player with Fall
             PlayerAnimator.SetTrigger("Die");
             Restart();
         }
@@ -93,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void Restart()
     {
+        //To Restart this Level 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
