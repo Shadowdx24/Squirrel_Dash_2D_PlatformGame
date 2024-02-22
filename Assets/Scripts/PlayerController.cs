@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D PlayerCollider;
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
     
     void Update()
     {
@@ -68,12 +70,14 @@ public class PlayerController : MonoBehaviour
             score++;
             Debug.Log(score);
             Destroy(collision.gameObject);
+            scoreText.text = "" + score;
            
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
             // To Win this Level
             Debug.Log("Level1 Complete");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
         }
     }
 
