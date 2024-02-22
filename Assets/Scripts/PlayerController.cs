@@ -84,13 +84,13 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Spikes
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
-            Restart();
+           // Restart();
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
             // Die to A Player with Fall
             PlayerAnimator.SetTrigger("Die");
-            Restart();
+            //Restart();
         }
     }
 
