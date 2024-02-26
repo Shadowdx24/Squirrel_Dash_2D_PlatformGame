@@ -17,7 +17,7 @@ public class MovingPlatform : MonoBehaviour
 
             if (currWayPoint >= wayPoints.Length - 0.1f)
             {
-                currWayPoint=0;
+                currWayPoint = 0;
             }
         }
         //To Move a Platform
