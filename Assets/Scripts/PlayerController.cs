@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            // Die to A Player with Spikes
+            // Die to A Player with Traps
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
            // Restart();
