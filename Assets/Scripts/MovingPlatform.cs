@@ -5,13 +5,13 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Transform[] wayPoints;
     private int currWayPoint;
-    [SerializeField] private float clousingWaypoint=0.1f;
+    [SerializeField] private float clousingWayPoint=0.1f;
 
     // Update is called once per frame
     void Update()
     {
         //To Move a Distance in the Platform
-        if (Vector2.Distance(transform.position, wayPoints[currWayPoint].position) < clousingWaypoint)
+        if (Vector2.Distance(transform.position, wayPoints[currWayPoint].position) < clousingWayPoint)
         {
             currWayPoint ++;
 
