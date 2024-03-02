@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
+
+    
+    void Start()
+    {
+           
+    }
     
     void Update()
     {
@@ -27,11 +33,13 @@ public class PlayerController : MonoBehaviour
         {
             state = 1;
             PlayerSprite.flipX = true;
+            //AudioManager.instance.Play("Run");
         }
         else if (dirX > 0) 
         {
             state = 1;
             PlayerSprite.flipX = false;
+            //AudioManager.instance.Play("Run");
         }
         else
         {
@@ -71,13 +79,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log(score);
             Destroy(collision.gameObject);
             scoreText.text = "" + score;
-           
+            AudioManager.instance.Play("Coin");
+
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
             // To Win this Level
             Debug.Log("Level1 Complete");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+           // AudioManager.instance.Play("Level2 Bg");
+           // AudioManager.instance.Stop("Level1 Bg");
         }
     }
 
@@ -88,13 +99,15 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Traps
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
-           // Restart();
+            // Restart();
+            AudioManager.instance.Play("Hurt");
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
             // Die to A Player with Fall
             PlayerAnimator.SetTrigger("Die");
             //Restart();
+            AudioManager.instance.Play("Hurt");
         }
     }
 
