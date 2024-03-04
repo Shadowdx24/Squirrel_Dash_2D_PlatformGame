@@ -426,7 +426,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     audioSource: {fileID: 0}
-  - Name: Level1 Bg
+  - Name: Level 1
     clip: {fileID: 8300000, guid: ee0f18f6b57852f4e83225cd500554ab, type: 3}
     volume: 1
     pitch: 1
@@ -450,8 +450,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
-  - Name: Level2 Bg
+  - Name: Level 2
     clip: {fileID: 8300000, guid: 3f41acadbc5d0a44caaf5ef3c30829ac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioSource: {fileID: 0}
+  - Name: Game Over
+    clip: {fileID: 8300000, guid: 512a354b618dbe1418e062b1149a13de, type: 3}
     volume: 1
     pitch: 1
     loop: 1

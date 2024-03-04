@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -14,11 +16,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText1;
+    private int currHeath = 3;
+    //[SerializeField] private int maxHealth = 3;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private GameObject gameOverObj;
 
-    
     void Start()
     {
-           
+       // currHeath = maxHealth;
+       //healthText.text = "" + currHeath;
+        currHeath= PlayerPrefs.GetInt("Health", 3);
+        healthText.text = "" + currHeath;
+        Debug.Log(currHeath);
     }
     
     void Update()
@@ -87,8 +97,9 @@ public class PlayerController : MonoBehaviour
             // To Win this Level
             Debug.Log("Level1 Complete");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-           // AudioManager.instance.Play("Level2 Bg");
-           // AudioManager.instance.Stop("Level1 Bg");
+            AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
+            AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
+            //AudioManager.instance.Play("Level2 Bg");
         }
     }
 
@@ -97,17 +108,38 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             // Die to A Player with Traps
+            currHeath --;
+            //healthText.text = "" + currHeath;
+            PlayerPrefs.SetInt("Health", currHeath);
+            Debug.Log(currHeath);
             Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
-            // Restart();
             AudioManager.instance.Play("Hurt");
+
+            if (currHeath == 0)
+            {
+                Debug.Log("Game Over");
+                PlayerAnimator.SetTrigger("Die");
+                AudioManager.instance.Play("Hurt");
+                GameOver();
+            }
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
             // Die to A Player with Fall
+            currHeath--;
+            PlayerPrefs.SetInt("Health", currHeath);
+            Debug.Log(currHeath);
             PlayerAnimator.SetTrigger("Die");
-            //Restart();
             AudioManager.instance.Play("Hurt");
+
+            if (currHeath == 0)
+            {
+                Debug.Log("Game Over");
+                PlayerAnimator.SetTrigger("Die");
+                AudioManager.instance.Play("Hurt");
+                GameOver();
+            }
         }
     }
 
@@ -115,5 +147,34 @@ public class PlayerController : MonoBehaviour
     {
         //To Restart this Level 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+       
+    private void GameOver()
+    {
+        gameOverObj.SetActive(true);
+        Time.timeScale = 0f;
+        AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
+        AudioManager.instance.Play("Game Over");
+        scoreText1.text = "Score: " + score;
+    }
+
+    public void GameRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1.0f;
+        gameOverObj.SetActive(false);
+        AudioManager.instance.Stop("Game Over");
+        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("Health", 3);
+        score = 0;
+    }
+
+    public void GameHome()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
+        gameOverObj.SetActive(false);
+        AudioManager.instance.Stop("Game Over");
+        AudioManager.instance.Play("Home");
     }
 }

@@ -7,8 +7,9 @@ public class Home : MonoBehaviour
     {
         // Start a Game
         SceneManager.LoadScene(1);
-       // AudioManager.instance.Play("Level1 Bg");
+        AudioManager.instance.Play("Level 1");
         AudioManager.instance.Stop("Home");
+        PlayerPrefs.SetInt("Health",3);
     }
 
     public void GameQuit()
