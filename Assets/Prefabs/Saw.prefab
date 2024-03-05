@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5870152118612872080}
   - component: {fileID: 2825609405582129788}
-  - component: {fileID: 2158411966403293070}
+  - component: {fileID: 573301495219797637}
   - component: {fileID: 8286332865563674540}
   m_Layer: 0
   m_Name: Saw
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2158411966403293070
-BoxCollider2D:
+--- !u!58 &573301495219797637
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,18 +119,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.375, y: 2.375}
-    newSize: {x: 0.38, y: 0.38}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38, y: 0.38}
-  m_EdgeRadius: 0
+  m_Radius: 1.1875
 --- !u!114 &8286332865563674540
 MonoBehaviour:
   m_ObjectHideFlags: 0

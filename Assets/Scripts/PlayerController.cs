@@ -1,7 +1,5 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -16,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     private int score = 0;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI scoreText1;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
     private int currHeath = 3;
     //[SerializeField] private int maxHealth = 3;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -109,18 +107,12 @@ public class PlayerController : MonoBehaviour
         {
             // Die to A Player with Traps
             currHeath --;
-            //healthText.text = "" + currHeath;
             PlayerPrefs.SetInt("Health", currHeath);
-            Debug.Log(currHeath);
-            Debug.Log("Game Over");
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
 
             if (currHeath == 0)
             {
-                Debug.Log("Game Over");
-                PlayerAnimator.SetTrigger("Die");
-                AudioManager.instance.Play("Hurt");
                 GameOver();
             }
         }
@@ -129,18 +121,28 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Fall
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
-            Debug.Log(currHeath);
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
 
             if (currHeath == 0)
             {
-                Debug.Log("Game Over");
-                PlayerAnimator.SetTrigger("Die");
-                AudioManager.instance.Play("Hurt");
                 GameOver();
             }
         }
+        else if (collision.gameObject.CompareTag("enemy"))
+        {
+            // Die to A Player with Fall
+            currHeath--;
+            PlayerPrefs.SetInt("Health", currHeath);
+            PlayerAnimator.SetTrigger("Die");
+            AudioManager.instance.Play("Hurt");
+
+            if (currHeath == 0)
+            {
+                GameOver();
+            }
+        }
+
     }
 
     private void Restart()
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f;
         AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
         AudioManager.instance.Play("Game Over");
-        scoreText1.text = "Score: " + score;
+        gameOverScoreText.text = "Score: " + score;
     }
 
     public void GameRestart()
