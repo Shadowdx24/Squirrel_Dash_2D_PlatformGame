@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform LeftEdga;
-    [SerializeField] private Transform RightEdga;
+    [SerializeField] private Transform LeftEdge;
+    [SerializeField] private Transform RightEdge;
     [SerializeField] private float speed = 1f;
     private bool MovingLeft;
-    [SerializeField] Animator EnemyAnimator;
+    [SerializeField] private Animator EnemyAnimator;
     private Vector3 InitialScale;
     
     // Start is called before the first frame update
@@ -19,9 +19,10 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // To Enemy Move 
         if (MovingLeft)
         {
-            if (transform.position.x >= LeftEdga.position.x)
+            if (transform.position.x >= LeftEdge.position.x)
             {
                 move(-1);
             }
@@ -32,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if (transform.position.x <= RightEdga.position.x)
+            if (transform.position.x <= RightEdge.position.x)
             {
                 move(1);
             }
