@@ -111416,7 +111416,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1617999400}
     - target: {fileID: 4819837754864634390, guid: 289fd795799e8024b91db4afd08e12ea, type: 3}
+      propertyPath: LeftEdge
+      value: 
+      objectReference: {fileID: 1617999400}
+    - target: {fileID: 4819837754864634390, guid: 289fd795799e8024b91db4afd08e12ea, type: 3}
       propertyPath: RightEdga
+      value: 
+      objectReference: {fileID: 1960478202}
+    - target: {fileID: 4819837754864634390, guid: 289fd795799e8024b91db4afd08e12ea, type: 3}
+      propertyPath: RightEdge
       value: 
       objectReference: {fileID: 1960478202}
     m_RemovedComponents: []
