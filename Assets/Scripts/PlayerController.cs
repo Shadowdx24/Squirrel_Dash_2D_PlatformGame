@@ -99,6 +99,12 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
             //AudioManager.instance.Play("Level2 Bg");
         }
+        else if (collision.gameObject.CompareTag("enemy"))
+        {
+
+            // Die to A Player with Fall
+            Destroy(collision.gameObject); 
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -131,6 +137,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {
+
             // Die to A Player with Fall
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
