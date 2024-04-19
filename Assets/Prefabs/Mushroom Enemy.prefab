@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1020934362269097919}
   - component: {fileID: 3663873575429728021}
   - component: {fileID: 4819837754864634390}
-  - component: {fileID: 4520879005185720016}
+  - component: {fileID: 1782411854822577869}
+  - component: {fileID: 6873323115882302163}
   m_Layer: 0
   m_Name: Mushroom Enemy
   m_TagString: enemy
@@ -120,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003952384, y: -0.40306133}
+  m_Offset: {x: -0.003952384, y: -0.40897924}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6917157, y: 1.1938773}
+  m_Size: {x: 1.6917157, y: 1.1820415}
   m_EdgeRadius: 0
 --- !u!95 &3663873575429728021
 Animator:
@@ -170,7 +171,9 @@ MonoBehaviour:
   RightEdge: {fileID: 0}
   speed: 3
   EnemyAnimator: {fileID: 3663873575429728021}
---- !u!61 &4520879005185720016
+  headCollider: {fileID: 1782411854822577869}
+  bodyCollider: {fileID: 1020934362269097919}
+--- !u!61 &1782411854822577869
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +205,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019379556, y: 0.22432955}
+  m_Offset: {x: -0.0023252368, y: 0.22724223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -213,5 +216,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.98845035, y: 0.060967654}
+  m_Size: {x: 1.0095664, y: 0.060439527}
   m_EdgeRadius: 0
+--- !u!50 &6873323115882302163
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834385153910774466}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private int maxHealth = 3;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject gameOverObj;
-
+    
     void Start()
     {
        // currHeath = maxHealth;
@@ -82,28 +82,28 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
+
             //To collect a Gem and Grind a Score
             score++;
             Debug.Log(score);
             Destroy(collision.gameObject);
             scoreText.text = "" + score;
             AudioManager.instance.Play("Coin");
-
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
+
             // To Win this Level
             Debug.Log("Level1 Complete");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
             AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
-            //AudioManager.instance.Play("Level2 Bg");
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {
 
-            // Die to A Player with Fall
-            Destroy(collision.gameObject); 
+            // Die to A Enemy in Player
+            collision.gameObject.GetComponent<EnemyMovement>().die();
         }
     }
 
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("enemy"))
         {
 
-            // Die to A Player with Fall
+            // Die to A Player in Enemy
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
             PlayerAnimator.SetTrigger("Die");
