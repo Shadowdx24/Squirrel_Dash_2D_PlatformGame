@@ -104999,7 +104999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd26c2f0d7fd84479379b3c9cba3191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpFroce: 15.2
+  JumpFroce: 15
   PlayerRb: {fileID: 1648674728}
   JumpAnimator: {fileID: 1618225596}
 --- !u!1 &1646194819 stripped
