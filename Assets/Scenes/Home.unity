@@ -571,13 +571,14 @@ GameObject:
   - component: {fileID: 241089391}
   - component: {fileID: 241089390}
   - component: {fileID: 241089389}
+  - component: {fileID: 241089392}
   m_Layer: 5
   m_Name: Level 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &241089388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -692,6 +693,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241089387}
   m_CullTransparentMesh: 1
+--- !u!114 &241089392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241089387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69c1a21549ed4482a9dfa06bead6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBtn: {fileID: 241089389}
+  levelName: level5
 --- !u!1 &262790365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1615,7 @@ GameObject:
   - component: {fileID: 1002758280}
   - component: {fileID: 1002758279}
   - component: {fileID: 1002758278}
+  - component: {fileID: 1002758281}
   m_Layer: 5
   m_Name: Level 3
   m_TagString: Untagged
@@ -1721,6 +1737,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002758276}
   m_CullTransparentMesh: 1
+--- !u!114 &1002758281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002758276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69c1a21549ed4482a9dfa06bead6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBtn: {fileID: 1002758278}
+  levelName: Level3
 --- !u!1 &1077583371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1897,7 @@ GameObject:
   - component: {fileID: 1267202211}
   - component: {fileID: 1267202210}
   - component: {fileID: 1267202209}
+  - component: {fileID: 1267202212}
   m_Layer: 5
   m_Name: Level 4
   m_TagString: Untagged
@@ -1988,6 +2019,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267202207}
   m_CullTransparentMesh: 1
+--- !u!114 &1267202212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267202207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69c1a21549ed4482a9dfa06bead6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBtn: {fileID: 1267202209}
+  levelName: Level4
 --- !u!1 &1267207334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,6 +2503,7 @@ GameObject:
   - component: {fileID: 1473512855}
   - component: {fileID: 1473512854}
   - component: {fileID: 1473512853}
+  - component: {fileID: 1473512856}
   m_Layer: 5
   m_Name: Level 1
   m_TagString: Untagged
@@ -2579,6 +2625,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473512851}
   m_CullTransparentMesh: 1
+--- !u!114 &1473512856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473512851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69c1a21549ed4482a9dfa06bead6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBtn: {fileID: 1473512853}
+  levelName: Level1
 --- !u!1 &1539336270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,6 +2726,7 @@ GameObject:
   - component: {fileID: 1599474565}
   - component: {fileID: 1599474564}
   - component: {fileID: 1599474563}
+  - component: {fileID: 1599474566}
   m_Layer: 5
   m_Name: Level 2
   m_TagString: Untagged
@@ -2787,6 +2848,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599474561}
   m_CullTransparentMesh: 1
+--- !u!114 &1599474566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599474561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69c1a21549ed4482a9dfa06bead6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBtn: {fileID: 1599474563}
+  levelName: Level2
 --- !u!1 &1990488002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,6 +3339,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081261313}
   m_CullTransparentMesh: 1
+--- !u!1 &2125276755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125276756}
+  - component: {fileID: 2125276757}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2125276756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125276755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125276757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125276755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a0067c02a464746b5a7637788c554b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelBtn:
+  - {fileID: 1473512853}
+  - {fileID: 1599474563}
+  - {fileID: 1002758278}
+  - {fileID: 1267202209}
+  LevelName:
+  - Level1
+  - Level2
+  - Level3
+  - Level4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3273,3 +3402,4 @@ SceneRoots:
   - {fileID: 1286547571}
   - {fileID: 1268893903}
   - {fileID: 146902354}
+  - {fileID: 2125276756}

@@ -92,12 +92,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
-
+            LevelManager.Instance.UnlockNextLevel();
             // To Win this Level
             Debug.Log("Level1 Complete");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
             AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
+            
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {
