@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private int maxHealth = 3;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject gameOverObj;
+    [SerializeField] private GameObject gamePauseObj;
     
     void Start()
     {
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
         }
 
         PlayerAnimator.SetInteger("State",state);
+        GamePause();
     }
 
     private bool isGrounded()
@@ -158,6 +160,15 @@ public class PlayerController : MonoBehaviour
         //To Restart this Level 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    private void GamePause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gamePauseObj.SetActive(true);
+            Time.timeScale = 0f;
+            AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
+        }
+    }
        
     private void GameOver()
     {
@@ -186,5 +197,13 @@ public class PlayerController : MonoBehaviour
         gameOverObj.SetActive(false);
         AudioManager.instance.Stop("Game Over");
         AudioManager.instance.Play("Home");
+    }
+
+    public void GameResume()
+    {
+        Time.timeScale = 1.0f;
+        gamePauseObj.SetActive(false);  
+        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        
     }
 }
