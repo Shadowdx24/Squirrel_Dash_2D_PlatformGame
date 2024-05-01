@@ -5,6 +5,7 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Button levelBtn;
     [SerializeField] private string levelName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,5 @@ public class LevelLoader : MonoBehaviour
         {
             levelBtn.interactable = false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
