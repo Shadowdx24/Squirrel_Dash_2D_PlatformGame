@@ -9,13 +9,13 @@ public class LevelLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt(levelName)==1)
+        if (PlayerPrefs.GetInt(levelName) == (int) LevelState.Locked)
         {
-            levelBtn.interactable = true;
+            levelBtn.interactable = false;
         }
         else
         {
-            levelBtn.interactable = false;
+            levelBtn.interactable = true;
         }
     }
 }

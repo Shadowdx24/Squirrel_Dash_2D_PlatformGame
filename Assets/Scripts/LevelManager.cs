@@ -30,12 +30,18 @@ public class LevelManager : MonoBehaviour
 
    private void UnlockFirstLevel()
     {
-        PlayerPrefs.SetInt(LevelName[0], 1);
+        PlayerPrefs.SetInt(LevelName[0], (int)LevelState.Unlocked);
     }
 
     public void UnlockNextLevel()
     {
+        LevelMark(currLevel);
         currLevel++;
-        PlayerPrefs.SetInt(LevelName[currLevel],1);
+        PlayerPrefs.SetInt(LevelName[currLevel], (int)LevelState.Unlocked);
+    }
+
+    private void LevelMark(int lel)
+    {
+        PlayerPrefs.SetInt(LevelName[lel], (int)LevelState.Completed);
     }
 }
