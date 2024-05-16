@@ -50,7 +50,6 @@ public class EnemyMovement : MonoBehaviour
                 MovingLeft=true;
             }
         }
-
     }
 
     private void move(int dir)
