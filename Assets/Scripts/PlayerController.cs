@@ -108,6 +108,19 @@ public class PlayerController : MonoBehaviour
             // Die to A Enemy in Player
             collision.gameObject.GetComponent<EnemyMovement>().die();
         }
+        else if (collision.gameObject.CompareTag("bullet"))
+        {
+            // Die to A Player with Fall
+            currHeath--;
+            PlayerPrefs.SetInt("Health", currHeath);
+            PlayerAnimator.SetTrigger("Die");
+            AudioManager.instance.Play("Hurt");
+
+            if (currHeath == 0)
+            {
+                GameOver();
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

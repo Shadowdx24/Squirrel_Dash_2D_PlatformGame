@@ -1,4 +1,6 @@
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -10,12 +12,16 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 InitialScale;
     [SerializeField] private BoxCollider2D headCollider;
     [SerializeField] private BoxCollider2D bodyCollider;
-    
+    [SerializeField] private Transform bulletsParent;
+    [SerializeField] private bool RangedEnemy = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         MovingLeft = true;
         InitialScale = transform.localScale;
+       
     }
 
     // Update is called once per frame
@@ -44,15 +50,19 @@ public class EnemyMovement : MonoBehaviour
                 MovingLeft=true;
             }
         }
-        
-        
+
     }
 
     private void move(int dir)
     {
         EnemyAnimator.SetBool("moving",true);
         transform.position = new Vector3(transform.position.x + speed * dir * Time.deltaTime, transform.position.y, transform.position.z);
-        transform.localScale = new Vector3(InitialScale.x * -dir,InitialScale.y,InitialScale.z);
+        transform.localScale = new Vector3(InitialScale.x * -dir, InitialScale.y, InitialScale.z);
+
+        if (RangedEnemy)
+        {
+            bulletsParent.localScale = new Vector3(-transform.localScale.x, bulletsParent.localScale.y, bulletsParent.localScale.z);
+        }
     }
 
     public void die()

@@ -9,6 +9,7 @@ TagManager:
   - Fall
   - Trap
   - enemy
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
+  - Bullet
   - 
   - 
   - 
