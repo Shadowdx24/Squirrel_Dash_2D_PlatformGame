@@ -28,5 +28,4 @@ public class EnemyBullet : MonoBehaviour
        // transform.position=new Vector2(transform.position.x - (1 * bulletSpeed * Time.deltaTime), transform.position.y);
        // transform.position = new Vector2(transform.position.x + (1 * bulletSpeed * Time.deltaTime), transform.position.y);
     }
-    
 }
