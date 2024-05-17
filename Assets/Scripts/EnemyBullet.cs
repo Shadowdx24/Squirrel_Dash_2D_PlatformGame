@@ -24,6 +24,7 @@ public class EnemyBullet : MonoBehaviour
     {
         float movement = bulletSpeed * Time.deltaTime;
         transform.Translate(movement,0,0);
+        Destroy(gameObject,2.5f);
        // transform.position=new Vector2(transform.position.x - (1 * bulletSpeed * Time.deltaTime), transform.position.y);
        // transform.position = new Vector2(transform.position.x + (1 * bulletSpeed * Time.deltaTime), transform.position.y);
     }

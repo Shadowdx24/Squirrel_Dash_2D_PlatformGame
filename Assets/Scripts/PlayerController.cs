@@ -114,8 +114,8 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Fall
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
-            //BulletAnimator.SetTrigger("explod");
             collision.gameObject.GetComponent<Animator>().SetTrigger("explod");
+            Destroy(collision.gameObject,.5f);
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
 
