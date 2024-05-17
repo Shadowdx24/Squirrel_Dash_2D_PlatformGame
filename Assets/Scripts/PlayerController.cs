@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject gameOverObj;
     [SerializeField] private GameObject gamePauseObj;
-    
+    [SerializeField] private Animator BulletAnimator;
+
     void Start()
     {
        // currHeath = maxHealth;
@@ -113,6 +114,8 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Fall
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
+            //BulletAnimator.SetTrigger("explod");
+            collision.gameObject.GetComponent<Animator>().SetTrigger("explod");
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
 
