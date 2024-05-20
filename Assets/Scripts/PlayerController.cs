@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gameOverObj;
     [SerializeField] private GameObject gamePauseObj;
     [SerializeField] private Animator BulletAnimator;
+    [SerializeField] private Animator BeeBulletAnimator;
 
     void Start()
     {
@@ -114,7 +115,8 @@ public class PlayerController : MonoBehaviour
             // Die to A Player with Fall
             currHeath--;
             PlayerPrefs.SetInt("Health", currHeath);
-            collision.gameObject.GetComponent<Animator>().SetTrigger("explod");
+            collision.gameObject.GetComponent<Animator>().SetTrigger("explode");
+            collision.gameObject.GetComponent<Animator>().SetTrigger("explode");
             Destroy(collision.gameObject,.5f);
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
@@ -197,7 +199,8 @@ public class PlayerController : MonoBehaviour
 
     public void GameRestart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1.0f;
         gameOverObj.SetActive(false);
         AudioManager.instance.Stop("Game Over");

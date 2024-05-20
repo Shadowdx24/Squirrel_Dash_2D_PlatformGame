@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D bodyCollider;
     [SerializeField] private Transform bulletsParent;
     [SerializeField] private bool RangedEnemy = false;
+    [SerializeField] private bool HasMovement = true;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void move(int dir)
     {
-        EnemyAnimator.SetBool("moving",true);
+        if (HasMovement)
+        {
+            EnemyAnimator.SetBool("moving",true);
+        }
         transform.position = new Vector3(transform.position.x + speed * dir * Time.deltaTime, transform.position.y, transform.position.z);
         transform.localScale = new Vector3(InitialScale.x * -dir, InitialScale.y, InitialScale.z);
 
