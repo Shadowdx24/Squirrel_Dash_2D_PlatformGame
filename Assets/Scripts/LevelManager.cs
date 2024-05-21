@@ -45,9 +45,13 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt(LevelName[lel], (int)LevelState.Completed);
     }
 
-    private void LevelReset()
+   public void LevelReset()
     {
-        currLevel--;
-        PlayerPrefs.SetInt(LevelName[currLevel], (int)LevelState.Locked);
+        //currLevel--;
+        currLevel = 0;
+        for (int i = 1; i < LevelName.Length; i++)
+        {
+            PlayerPrefs.SetInt(LevelName[i], (int)LevelState.Locked);
+        }
     }
 }

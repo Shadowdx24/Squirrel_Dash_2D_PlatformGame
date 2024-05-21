@@ -55,4 +55,11 @@ public class Home : MonoBehaviour
         AudioManager.instance.Stop("Home");
         PlayerPrefs.SetInt("Health", 3);
     }
+    public void Level5()
+    {
+        SceneManager.LoadScene(5);
+        //AudioManager.instance.Play("Level 1");
+        AudioManager.instance.Stop("Home");
+        PlayerPrefs.SetInt("Health", 3);
+    }
 }

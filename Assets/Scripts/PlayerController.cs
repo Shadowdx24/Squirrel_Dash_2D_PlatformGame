@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject gameOverObj;
     [SerializeField] private GameObject gamePauseObj;
+    [SerializeField] private GameObject playAgainObj;
+    [SerializeField] private GameObject bgFunctionObj;
     [SerializeField] private Animator BulletAnimator;
     [SerializeField] private Animator BeeBulletAnimator;
 
@@ -183,6 +185,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gamePauseObj.SetActive(true);
+            bgFunctionObj.SetActive(false); 
             Time.timeScale = 0f;
             AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
         }
@@ -194,15 +197,16 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f;
         AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
         AudioManager.instance.Play("Game Over");
+        bgFunctionObj.SetActive(false);
         gameOverScoreText.text = "Score: " + score;
     }
 
     public void GameRestart()
     {
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1.0f;
         gameOverObj.SetActive(false);
+        bgFunctionObj.SetActive(true);
         AudioManager.instance.Stop("Game Over");
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("Health", 3);
@@ -221,8 +225,34 @@ public class PlayerController : MonoBehaviour
     public void GameResume()
     {
         Time.timeScale = 1.0f;
-        gamePauseObj.SetActive(false);  
+        gamePauseObj.SetActive(false);
+        bgFunctionObj.SetActive(true);
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         
+    }
+
+    public void PlayAgain()
+    {
+       playAgainObj.SetActive(true);
+       gameOverObj.SetActive(false);    
+    }
+    
+    public void Yes()
+    {
+        SceneManager.LoadScene(0);
+        LevelManager.Instance.LevelReset();
+        Time.timeScale = 1.0f;
+        gameOverObj.SetActive(false);
+        AudioManager.instance.Stop("Game Over");
+        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("Health", 3);
+        bgFunctionObj.SetActive(true);
+        score = 0;
+    }
+
+    public void No()
+    {
+        playAgainObj.SetActive(false);
+        gameOverObj.SetActive(true);
     }
 }
