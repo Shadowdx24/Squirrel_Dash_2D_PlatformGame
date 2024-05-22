@@ -759,6 +759,7 @@ GameObject:
   - component: {fileID: 331786954}
   - component: {fileID: 331786953}
   - component: {fileID: 331786952}
+  - component: {fileID: 331786955}
   m_Layer: 5
   m_Name: btnQuit
   m_TagString: Untagged
@@ -830,9 +831,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286547572}
-        m_TargetAssemblyTypeName: Home, Assembly-CSharp
-        m_MethodName: GameQuit
+      - m_Target: {fileID: 331786955}
+        m_TargetAssemblyTypeName: GameQuit, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -880,6 +881,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331786950}
   m_CullTransparentMesh: 1
+--- !u!114 &331786955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331786950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f17d136e8b69746a28f40c8ad6c205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700316831
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -141}
+  m_AnchoredPosition: {x: 0, y: -148}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &700316833

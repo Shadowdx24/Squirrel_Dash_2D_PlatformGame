@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
        // currHeath = maxHealth;
        //healthText.text = "" + currHeath;
+        bgFunctionObj.SetActive(true);
         currHeath= PlayerPrefs.GetInt("Health", 3);
         healthText.text = "" + currHeath;
         Debug.Log(currHeath);
@@ -91,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
             //To collect a Gem and Grind a Score
             score++;
+            PlayerPrefs.SetInt("Score",score);
             Debug.Log(score);
             Destroy(collision.gameObject);
             scoreText.text = "" + score;
@@ -211,6 +213,7 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("Health", 3);
         score = 0;
+        PlayerPrefs.SetInt("Score", score);
     }
 
     public void GameHome()
@@ -255,4 +258,5 @@ public class PlayerController : MonoBehaviour
         playAgainObj.SetActive(false);
         gameOverObj.SetActive(true);
     }
+
 }
