@@ -144,11 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bda950bd9455c459a1bc4ea56bf141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
-  clousingWaypoint: 0.1
+  clousingWayPoint: 0.1
 --- !u!114 &1174317290478083542
 MonoBehaviour:
   m_ObjectHideFlags: 0

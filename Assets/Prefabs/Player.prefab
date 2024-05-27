@@ -207,5 +207,8 @@ MonoBehaviour:
   healthText: {fileID: 0}
   gameOverObj: {fileID: 0}
   gamePauseObj: {fileID: 0}
+  playAgainObj: {fileID: 0}
+  gameWarningObj: {fileID: 0}
   BulletAnimator: {fileID: 3961325645446944992, guid: 76df885d22cf75249975b61e7cc68fc6, type: 3}
   BeeBulletAnimator: {fileID: 846264992743261393, guid: 1b7c54c055b363b4d93d52538cf2d49e, type: 3}
+  gainLife: {fileID: 0}

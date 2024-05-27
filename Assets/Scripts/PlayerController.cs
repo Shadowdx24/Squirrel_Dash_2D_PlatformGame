@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,11 +22,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gameOverObj;
     [SerializeField] private GameObject gamePauseObj;
     [SerializeField] private GameObject playAgainObj;
+    [SerializeField] private GameObject gameWarningObj;
     [SerializeField] private Animator BulletAnimator;
     [SerializeField] private Animator BeeBulletAnimator;
+    [SerializeField] private Button gainLife;
 
     void Start()
     {
+        score = PlayerPrefs.GetInt("Score");
+        scoreText.text ="" + score;
        // currHeath = maxHealth;
        //healthText.text = "" + currHeath;
         currHeath= PlayerPrefs.GetInt("Health", 3);
@@ -208,8 +213,6 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.Stop("Game Over");
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("Health", 3);
-        score = 0;
-        PlayerPrefs.SetInt("Score", score);
     }
 
     public void GameHome()
@@ -232,10 +235,24 @@ public class PlayerController : MonoBehaviour
     public void PlayAgain()
     {
        playAgainObj.SetActive(true);
-       gameOverObj.SetActive(false);    
+       gameOverObj.SetActive(false);
+
+        if (score < 3)
+        {
+            gainLife.interactable = false;
+        }
+        else
+        {
+            gainLife.interactable = true;
+        }
     }
     
-    public void Yes()
+    public void PlayAgainYes()
+    {
+        gameWarningObj.SetActive(true);
+        playAgainObj.SetActive(false);
+    }
+    public void WarningYes()
     {
         SceneManager.LoadScene(0);
         LevelManager.Instance.LevelReset();
@@ -246,11 +263,22 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Health", 3);
         score = 0;
     }
-
-    public void No()
+    public void WarningNo()
     {
-        playAgainObj.SetActive(false);
-        gameOverObj.SetActive(true);
+        gameWarningObj.SetActive(false);
+        playAgainObj.SetActive(true);
+    }
+    public void GameLife()
+    {
+        score -=3;
+        currHeath++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1.0f;
+        gameOverObj.SetActive(false);
+        AudioManager.instance.Stop("Game Over");
+        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("Health", currHeath);
+        PlayerPrefs.SetInt("Score", score);
     }
 
 }
