@@ -249,19 +249,20 @@ public class PlayerController : MonoBehaviour
     
     public void PlayAgainYes()
     {
-        gameWarningObj.SetActive(true);
         playAgainObj.SetActive(false);
+        gameWarningObj.SetActive(true);
     }
     public void WarningYes()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+        gameWarningObj.SetActive(false);
         LevelManager.Instance.LevelReset();
         Time.timeScale = 1.0f;
-        gameOverObj.SetActive(false);
         AudioManager.instance.Stop("Game Over");
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("Health", 3);
         score = 0;
+        PlayerPrefs.SetInt("Score",score);
     }
     public void WarningNo()
     {

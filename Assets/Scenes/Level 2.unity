@@ -8295,6 +8295,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb0fde1a56f9fcc4ab4d8059b60264a9, type: 3}
+--- !u!1 &745485395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1762144240031589735, guid: bb0fde1a56f9fcc4ab4d8059b60264a9, type: 3}
+  m_PrefabInstance: {fileID: 745485394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &746869698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126668,6 +126673,10 @@ PrefabInstance:
       propertyPath: playAgainObj
       value: 
       objectReference: {fileID: 1542766562}
+    - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
+      propertyPath: gameWarningObj
+      value: 
+      objectReference: {fileID: 745485395}
     - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
       propertyPath: gameOverScoreText
       value: 
