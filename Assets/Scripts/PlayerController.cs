@@ -5,37 +5,38 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Rigidbody2D playerRb;
-    [SerializeField] private float speed = 1.0f;
-    [SerializeField] private float JumpForce = 5.0f;
     [SerializeField] private SpriteRenderer PlayerSprite;
     [SerializeField] private Animator PlayerAnimator;
-    private int state = 0;
     [SerializeField] private BoxCollider2D PlayerCollider;
+
+    [Header("Movement Parameters")]
+    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float JumpForce = 5.0f;
     [SerializeField] private LayerMask GroundLayer;
-    private int score = 0;
+
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
-    private int currHeath = 3;
-    //[SerializeField] private int maxHealth = 3;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject gameOverObj;
     [SerializeField] private GameObject gamePauseObj;
     [SerializeField] private GameObject playAgainObj;
     [SerializeField] private GameObject gameWarningObj;
-    [SerializeField] private Animator BulletAnimator;
-    [SerializeField] private Animator BeeBulletAnimator;
     [SerializeField] private Button gainLife;
+    
+    private int currHeath = 3;
+    private int score = 0;
+    private int state = 0;
 
     void Start()
     {
         score = PlayerPrefs.GetInt("Score");
         scoreText.text ="" + score;
-       // currHeath = maxHealth;
-       //healthText.text = "" + currHeath;
-        currHeath= PlayerPrefs.GetInt("Health", 3);
+
+        currHeath = PlayerPrefs.GetInt("Health", 3);
         healthText.text = "" + currHeath;
-        Debug.Log(currHeath);
     }
     
     void Update()
@@ -92,11 +93,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-
             //To collect a Gem and Grind a Score
             score++;
             PlayerPrefs.SetInt("Score",score);
-            Debug.Log(score);
             Destroy(collision.gameObject);
             scoreText.text = "" + score;
             AudioManager.instance.Play("Coin");
@@ -104,16 +103,13 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
             LevelManager.Instance.UnlockNextLevel();
-            // To Win this Level
-            Debug.Log("Level1 Complete");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
             AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
             AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
-            
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {
-
             // Die to A Enemy in Player
             collision.gameObject.GetComponent<EnemyMovement>().die();
         }
@@ -124,9 +120,9 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("Health", currHeath);
             collision.gameObject.GetComponent<Animator>().SetTrigger("explode");
             collision.gameObject.GetComponent<Animator>().SetTrigger("explode");
-            Destroy(collision.gameObject,.5f);
             PlayerAnimator.SetTrigger("Die");
             AudioManager.instance.Play("Hurt");
+            Destroy(collision.gameObject,.5f);
 
             if (currHeath == 0)
             {
@@ -140,44 +136,33 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             // Die to A Player with Traps
-            currHeath --;
-            PlayerPrefs.SetInt("Health", currHeath);
-            PlayerAnimator.SetTrigger("Die");
-            AudioManager.instance.Play("Hurt");
-
-            if (currHeath == 0)
-            {
-                GameOver();
-            }
+            Die();
         }
         else if (collision.gameObject.CompareTag("Fall"))
         {
             // Die to A Player with Fall
-            currHeath--;
-            PlayerPrefs.SetInt("Health", currHeath);
-            PlayerAnimator.SetTrigger("Die");
-            AudioManager.instance.Play("Hurt");
-
-            if (currHeath == 0)
-            {
-                GameOver();
-            }
+            Die();
         }
         else if (collision.gameObject.CompareTag("enemy"))
         {
 
             // Die to A Player in Enemy
-            currHeath--;
-            PlayerPrefs.SetInt("Health", currHeath);
-            PlayerAnimator.SetTrigger("Die");
-            AudioManager.instance.Play("Hurt");
-
-            if (currHeath == 0)
-            {
-                GameOver();
-            }
+            Die();
         }
 
+    }
+
+    private void Die()
+    {
+        currHeath--;
+        PlayerPrefs.SetInt("Health", currHeath);
+        PlayerAnimator.SetTrigger("Die");
+        AudioManager.instance.Play("Hurt");
+
+        if (currHeath == 0)
+        {
+            GameOver();
+        }
     }
 
     private void Restart()
@@ -185,6 +170,7 @@ public class PlayerController : MonoBehaviour
         //To Restart this Level 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     private void GamePause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -252,34 +238,43 @@ public class PlayerController : MonoBehaviour
         playAgainObj.SetActive(false);
         gameWarningObj.SetActive(true);
     }
+
     public void WarningYes()
     {
-        SceneManager.LoadScene(1);
         gameWarningObj.SetActive(false);
         LevelManager.Instance.LevelReset();
         Time.timeScale = 1.0f;
-        AudioManager.instance.Stop("Game Over");
-        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetInt("Health", 3);
+        
         score = 0;
         PlayerPrefs.SetInt("Score",score);
+        currHeath = 3;
+        PlayerPrefs.SetInt("Health", currHeath);
+
+        AudioManager.instance.Stop("Game Over");
+        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        
+        SceneManager.LoadScene(1);
     }
+
     public void WarningNo()
     {
         gameWarningObj.SetActive(false);
         playAgainObj.SetActive(true);
     }
+
     public void GameLife()
     {
         score -=3;
+        PlayerPrefs.SetInt("Score", score);
         currHeath++;
+        PlayerPrefs.SetInt("Health", currHeath);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1.0f;
         gameOverObj.SetActive(false);
+        
+        Time.timeScale = 1.0f;
+        
         AudioManager.instance.Stop("Game Over");
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetInt("Health", currHeath);
-        PlayerPrefs.SetInt("Score", score);
     }
-
 }

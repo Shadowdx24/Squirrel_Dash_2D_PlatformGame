@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
@@ -6,10 +7,9 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Button levelBtn;
     [SerializeField] private string levelName;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt(levelName) == (int) LevelState.Locked)
+        if (PlayerPrefs.GetInt(levelName) == (int)LevelState.Locked)
         {
             levelBtn.interactable = false;
         }
@@ -17,5 +17,12 @@ public class LevelLoader : MonoBehaviour
         {
             levelBtn.interactable = true;
         }
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(levelName);
+        AudioManager.instance.Stop("Home");
+        AudioManager.instance.Play(levelName);
     }
 }

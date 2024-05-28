@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyBullet1 : MonoBehaviour
+public class VerticalEnemyBullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 1f;
 
@@ -10,11 +10,6 @@ public class EnemyBullet1 : MonoBehaviour
         Invoke("ShootBullet", 5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void FixedUpdate()
     {
         BulletMovement();
@@ -25,6 +20,7 @@ public class EnemyBullet1 : MonoBehaviour
         float movement = bulletSpeed * Time.deltaTime;
         transform.Translate(0, -movement, 0);
         Destroy(gameObject, 2.5f);
+
         // transform.position=new Vector2(transform.position.x - (1 * bulletSpeed * Time.deltaTime), transform.position.y);
         // transform.position = new Vector2(transform.position.x + (1 * bulletSpeed * Time.deltaTime), transform.position.y);
     }

@@ -1744,17 +1744,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 788446514346701072}
     - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
-      propertyPath: gamePuaseObj
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
       propertyPath: playAgainObj
       value: 
       objectReference: {fileID: 3427636128794249282}
-    - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
-      propertyPath: bgFunctionObj
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 156887775315688174, guid: 5b7016c69eaf77d4092c2ca4f8ad6039, type: 3}
       propertyPath: gameWarningObj
       value: 

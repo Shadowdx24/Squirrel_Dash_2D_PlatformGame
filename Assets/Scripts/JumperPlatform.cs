@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JumpFlow : MonoBehaviour
+public class JumperPlatform : MonoBehaviour
 {
     [SerializeField] private float JumpFroce = 5.0f;
     [SerializeField] private Rigidbody2D PlayerRb;
@@ -10,9 +10,10 @@ public class JumpFlow : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            //PlayerRb.velocity=new Vector2(PlayerRb.velocity.x,JumpFroce); 
             PlayerRb.AddForce(Vector2.up * JumpFroce,ForceMode2D.Impulse);
             JumpAnimator.SetTrigger("jump");
+
+            //PlayerRb.velocity=new Vector2(PlayerRb.velocity.x,JumpFroce);
         }
     }
 }

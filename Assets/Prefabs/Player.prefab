@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 4013124475501148470}
-  speed: 5
+  speed: 7.5
   JumpForce: 7.5
   PlayerSprite: {fileID: 3258418275866840513}
   PlayerAnimator: {fileID: 5521887865570416698}

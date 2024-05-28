@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -7,6 +6,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     [SerializeField] private Button[] LevelBtn;
     [SerializeField] private string[] LevelName;
+
     private int currLevel = 0;
 
     private void Awake()
@@ -29,9 +29,9 @@ public class LevelManager : MonoBehaviour
     }
 
    private void UnlockFirstLevel()
-    {
-        PlayerPrefs.SetInt(LevelName[0], (int)LevelState.Unlocked);
-    }
+   {
+       PlayerPrefs.SetInt(LevelName[0], (int)LevelState.Unlocked);
+   }
 
     public void UnlockNextLevel()
     {

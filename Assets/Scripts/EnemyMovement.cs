@@ -4,19 +4,22 @@ using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private BoxCollider2D headCollider;
+    [SerializeField] private BoxCollider2D bodyCollider;
+    [SerializeField] private Animator EnemyAnimator;
+
+    [Header("Movement Parameters")]
     [SerializeField] private Transform LeftEdge;
     [SerializeField] private Transform RightEdge;
     [SerializeField] private float speed = 1f;
-    private bool MovingLeft;
-    [SerializeField] private Animator EnemyAnimator;
-    private Vector3 InitialScale;
-    [SerializeField] private BoxCollider2D headCollider;
-    [SerializeField] private BoxCollider2D bodyCollider;
     [SerializeField] private Transform bulletsParent;
     [SerializeField] private bool RangedEnemy = false;
     [SerializeField] private bool HasMovement = true;
 
-    // Start is called before the first frame update
+    private Vector3 InitialScale;
+    private bool MovingLeft;
+
     void Start()
     {
         
@@ -25,7 +28,6 @@ public class EnemyMovement : MonoBehaviour
        
     }
 
-    // Update is called once per frame
     void Update()
     {
         // To Enemy Move 

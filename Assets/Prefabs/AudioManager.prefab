@@ -51,7 +51,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     audioSource: {fileID: 0}
-  - Name: Level 1
+  - Name: Level1
     clip: {fileID: 8300000, guid: ee0f18f6b57852f4e83225cd500554ab, type: 3}
     volume: 1
     pitch: 1
@@ -75,7 +75,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
-  - Name: Level 2
+  - Name: Level2
     clip: {fileID: 8300000, guid: 3f41acadbc5d0a44caaf5ef3c30829ac, type: 3}
     volume: 1
     pitch: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
-  - Name: Level 3
+  - Name: Level3
     clip: {fileID: 8300000, guid: f5ad489a96b0fff4d8471c021491e6b0, type: 3}
     volume: 1
     pitch: 1
