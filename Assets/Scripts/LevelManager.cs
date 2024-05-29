@@ -25,6 +25,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.GetInt("Health") == 0)
+        {
+            LevelReset();
+            PlayerPrefs.SetInt("Health",3);
+        }
         UnlockFirstLevel();
     }
 

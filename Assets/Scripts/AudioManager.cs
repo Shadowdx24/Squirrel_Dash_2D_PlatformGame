@@ -65,4 +65,12 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetInt("Muted", isMuted ? 1 : 0);
         AudioListener.pause = isMuted;
     }
+
+    public void SetVolume(float vol)
+    {
+        foreach (var sound in sounds)
+        {
+            sound.audioSource.volume = vol;
+        }
+    }
 }

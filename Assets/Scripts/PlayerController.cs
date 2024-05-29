@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gamePauseObj;
     [SerializeField] private GameObject playAgainObj;
     [SerializeField] private GameObject gameWarningObj;
+    [SerializeField] private GameObject SettingObj;
     [SerializeField] private Button gainLife;
     
     private int currHeath = 3;
@@ -155,6 +156,10 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         currHeath--;
+        if (currHeath < 0)
+        {
+            currHeath = 0;
+        }
         PlayerPrefs.SetInt("Health", currHeath);
         PlayerAnimator.SetTrigger("Die");
         AudioManager.instance.Play("Hurt");
@@ -181,7 +186,19 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
         }
     }
-       
+
+    public void GameSettingOpen()
+    {
+        SettingObj.SetActive(true);
+        gamePauseObj.SetActive(false);
+    }
+
+    public void GameSettingClose()
+    {
+        SettingObj.SetActive(false);
+        gamePauseObj.SetActive(true);
+    }
+
     private void GameOver()
     {
         gameOverObj.SetActive(true);
@@ -254,6 +271,12 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.Play(SceneManager.GetActiveScene().name);
         
         SceneManager.LoadScene(1);
+    }
+
+    public void PlayAgainNo()
+    {
+        playAgainObj.SetActive(false);
+        gameOverObj.SetActive(true);
     }
 
     public void WarningNo()
