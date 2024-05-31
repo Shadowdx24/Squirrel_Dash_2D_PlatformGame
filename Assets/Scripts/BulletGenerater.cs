@@ -8,11 +8,13 @@ public class BulletGenerater : MonoBehaviour
     
     void Start()
     {
-        InvokeRepeating("generateBullet", 2f,5f);
+       // InvokeRepeating("generateBullet", 2f,5f);
+
     }
 
-    private void generateBullet()
+    public void generateBullet()
     {
+
         GameObject gun = Instantiate(bulletPrefab,bulletSpawnPos.transform.position,Quaternion.identity,bulletGeneratorParent);
         gun.SetActive(true);
 
