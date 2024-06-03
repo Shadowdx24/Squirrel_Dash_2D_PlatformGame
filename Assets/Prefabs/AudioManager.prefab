@@ -93,4 +93,28 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     audioSource: {fileID: 0}
+  - Name: Level4
+    clip: {fileID: 8300000, guid: 48bfe374c2abcf4479e5d8b1ce8cd559, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioSource: {fileID: 0}
+  - Name: Level5
+    clip: {fileID: 8300000, guid: 703db0b1dcaa18e42ab3c4816aeee756, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioSource: {fileID: 0}
+  - Name: Level Win
+    clip: {fileID: 8300000, guid: f84f6358fe6bdf14f89be4efd47e8d44, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - Name: Jump
+    clip: {fileID: 8300000, guid: 141550e897c2c7e439f83aeb3e4372d1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
   isMuted: 0

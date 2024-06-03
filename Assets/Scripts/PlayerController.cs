@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
         currHeath = PlayerPrefs.GetInt("Health", 3);
         healthText.text = "" + currHeath;
+        
+        //AudioManager.instance.Stop(SceneManager.GetActiveScene().name);
+        //AudioManager.instance.Play(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
     }
     
     void Update()
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x,JumpForce);
+            AudioManager.instance.Play("Jump");
         }
 
         if (playerRb.velocity.y > 0.1f)
@@ -103,6 +107,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("FinishLine"))
         {
+            AudioManager.instance.Play("Level Win");
+
             LevelManager.Instance.UnlockNextLevel();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
@@ -268,7 +274,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Health", currHeath);
 
         AudioManager.instance.Stop("Game Over");
-        AudioManager.instance.Play(SceneManager.GetActiveScene().name);
+        AudioManager.instance.Play("Level1");
         
         SceneManager.LoadScene(1);
     }
